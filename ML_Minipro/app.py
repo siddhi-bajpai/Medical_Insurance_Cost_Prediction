@@ -62,13 +62,11 @@ def predict():
         # Make prediction using the trained model
         prediction = logistic_regressor.predict(user_input)
 
-        # Log the prediction for debugging
-        print('Prediction:', prediction)
-
         # Return prediction as JSON response
         return jsonify({'prediction': prediction.tolist()})
     except Exception as e:
-        # Log any errors that occur during prediction
-        print('Prediction Error:', str(e))
-        return jsonify({'error': 'An error occurred during prediction.'})
+        return jsonify({'error': str(e)})
 
+
+if __name__ == '__main__':
+    app.run(debug=True)
